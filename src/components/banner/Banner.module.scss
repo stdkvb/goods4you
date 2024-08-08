@@ -1,0 +1,66 @@
+.banner {
+  background-color: var(--primary);
+  padding-bottom: 115px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+
+  &::after {
+    content: "Goods4you";
+    position: absolute;
+    z-index: 0;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 300px;
+    color: var(--white);
+    opacity: 0.12;
+  }
+}
+
+.title {
+  color: var(--white);
+  padding-top: 115px;
+  border-top: solid 2px var(--white);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 50px;
+}
+
+.description {
+  color: var(--white);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1366px) {
+  .banner::after {
+    font-size: 14vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .banner {
+    padding-bottom: 60px;
+  }
+  .title {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .banner {
+    padding-bottom: 30px;
+  }
+  .title {
+    padding-top: 30px;
+    font-size: 34px;
+  }
+}
