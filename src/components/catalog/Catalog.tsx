@@ -14,6 +14,7 @@ const Catalog = () => {
           <ItemCard key={item.id} data={item} />
         ))}
       </ul>
+      <button className="btn">Show more</button>
     </section>
   );
 };
