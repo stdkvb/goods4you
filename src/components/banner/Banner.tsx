@@ -4,7 +4,6 @@ import styles from "./Banner.module.scss";
 const Banner = () => {
   return (
     <section className={`container ${styles.banner}`}>
-      {/* <div className={styles.background}>Goods4you</div> */}
       <h2 className={styles.title}>
         Any products from famous brands
         <br />

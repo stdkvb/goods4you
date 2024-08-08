@@ -1,6 +1,10 @@
 @import "../styles/normalize.scss";
 @import "../styles/vars.scss";
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Jost", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -21,6 +25,13 @@ main {
   width: 100%;
 }
 
+h1 {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 56px;
+}
+
 .container {
   padding-left: 130px;
   padding-right: 130px;
@@ -32,12 +43,13 @@ main {
 
   &:hover {
     text-decoration: underline;
-    color: var(--gray);
+    color: var(--gray10);
   }
 }
 
 .btn {
   width: fit-content;
+  height: 62px;
   display: inline-flex;
   padding: 20px 50px;
   justify-content: center;
@@ -47,9 +59,14 @@ main {
   border-radius: 4px;
   color: var(--white);
   transition: all var(--transitionDuration) ease;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--cherry);
+  }
+
+  &_icon {
+    padding: 20px;
   }
 }
 

@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import styles from "./Header.module.scss";
-import logo from "../../assets/icons/Logo.svg";
-import cart from "../../assets/icons/Cart.svg";
+import logo from "../../assets/images/Logo.svg";
+import { cartIcon } from "../../assets/icons.tsx";
 
 const Header = () => {
   return (
@@ -20,7 +20,7 @@ const Header = () => {
         </HashLink>
         <NavLink className={`link ${styles.cart}`} to="/cart" aria-label="cart">
           Cart
-          <img src={cart} alt="cart" />
+          {cartIcon}
           <span className={styles.cartCounter} aria-label="items counter">
             1
           </span>

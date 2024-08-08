@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import styles from "./Footer.module.scss";
-import logo from "../../assets/icons/Logo.svg";
+import logo from "../../assets/images/Logo.svg";
 
 const Footer = () => {
   return (

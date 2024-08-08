@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
-import styles from "./HomePage.module.scss";
 import Banner from "../../components/banner/Banner";
+import Catalog from "../../components/catalog/Catalog";
 
 type Props = {};
 
@@ -16,6 +16,7 @@ export const HomePage = (props: Props) => {
         <title>Catalog | Goods4you</title>
       </Helmet>
       <Banner />
+      <Catalog />
     </>
   );
 };
