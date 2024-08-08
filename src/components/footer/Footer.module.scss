@@ -1,4 +1,27 @@
 .footer {
   width: 100%;
-  background-color: var(--primary);
+  background-color: var(--darkGray);
+  padding: 23px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .footer {
+    align-items: flex-start;
+  }
 }

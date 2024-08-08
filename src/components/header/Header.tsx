@@ -5,11 +5,9 @@ import styles from "./Header.module.scss";
 import logo from "../../assets/icons/Logo.svg";
 import cart from "../../assets/icons/Cart.svg";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   return (
-    <header className={styles.header + " container"} aria-label="header">
+    <header className={`container ${styles.header}`} aria-label="header">
       <NavLink to="/" aria-label="logo">
         <img src={logo} alt="logo" />
       </NavLink>
@@ -20,7 +18,7 @@ const Header = (props: Props) => {
         <HashLink className="link" to="/#faq" aria-label="FAQ">
           FAQ
         </HashLink>
-        <NavLink className={"link " + styles.cart} to="/cart" aria-label="cart">
+        <NavLink className={`link ${styles.cart}`} to="/cart" aria-label="cart">
           Cart
           <img src={cart} alt="cart" />
           <span className={styles.cartCounter} aria-label="items counter">
