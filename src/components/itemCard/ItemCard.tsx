@@ -17,7 +17,12 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
   return (
     <li className={styles.card}>
       <Link to={`product/${data.id}`} className={styles.wrapper}>
-        <img className={styles.image} src={data.imageUrl} />
+        <div className={styles.image}>
+          <div className={styles.background}>
+            <span>Show details</span>
+          </div>
+          <img src={data.imageUrl} />
+        </div>
         <div className={styles.info}>
           <div className={styles.description}>
             <span className={styles.name}>{data.name}</span>
