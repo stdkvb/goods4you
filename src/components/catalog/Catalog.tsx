@@ -2,7 +2,7 @@ import styles from "./Catalog.module.scss";
 import SearchBar from "../searcBar/SearchBar";
 import ItemCard from "../itemCard/ItemCard";
 import data from "../../../data.json";
-import { catalogItem } from "../interfaces/types";
+import { catalogItem } from "../../types";
 
 const Catalog = () => {
   return (

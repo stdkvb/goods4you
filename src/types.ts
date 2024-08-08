@@ -5,3 +5,9 @@ export interface catalogItem {
   imageUrl: string;
   count: number;
 }
+
+export interface faqItem {
+  id: number;
+  question: string;
+  answer: string;
+}

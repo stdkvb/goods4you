@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import styles from "./ItemCard.module.scss";
-import { catalogItem } from "../interfaces/types";
+import { catalogItem } from "../../types.ts";
 import { cartIcon, minusIcon, plusIcon } from "../../assets/icons.tsx";
 
 interface ItemCardProps {
@@ -26,7 +26,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
           <div className={styles.counter}>
             {data.count ? (
               <>
-                {" "}
                 <button
                   className="btn btn_icon"
                   onClick={handleClick}
