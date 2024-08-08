@@ -1,0 +1,17 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  span {
+    font-size: 68px;
+    color: var(--secondary);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}

@@ -6,7 +6,7 @@ import FAQ from "../../components/faq/FAQ";
 
 type Props = {};
 
-export const HomePage = (props: Props) => {
+const HomePage = (props: Props) => {
   return (
     <>
       <Helmet>
@@ -22,3 +22,5 @@ export const HomePage = (props: Props) => {
     </>
   );
 };
+
+export default HomePage;
