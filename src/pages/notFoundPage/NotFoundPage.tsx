@@ -6,10 +6,6 @@ const NotFoundPage = () => {
   return (
     <>
       <Helmet>
-        <meta
-          name="description"
-          content="Any products from famous brands with worldwide delivery"
-        />
         <title>Page not found | Goods4you</title>
       </Helmet>
       <div className={`container ${styles.notFound}`}>

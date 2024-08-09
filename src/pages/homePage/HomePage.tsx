@@ -10,10 +10,6 @@ const HomePage = (props: Props) => {
   return (
     <>
       <Helmet>
-        <meta
-          name="description"
-          content="Any products from famous brands with worldwide delivery"
-        />
         <title>Catalog | Goods4you</title>
       </Helmet>
       <Banner />

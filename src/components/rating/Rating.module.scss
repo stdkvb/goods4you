@@ -1,0 +1,12 @@
+.rating {
+  grid-area: rating;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  .active {
+    path {
+      fill: var(--secondary);
+    }
+  }
+}
