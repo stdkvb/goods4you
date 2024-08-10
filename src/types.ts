@@ -4,6 +4,7 @@ export interface catalogItem {
   price: number;
   imageUrl: string;
   count: number;
+  variant: string;
 }
 
 export interface faqItem {

@@ -69,7 +69,9 @@ h1 {
   }
 
   &_icon {
-    padding: 20px;
+    padding: 16px;
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -82,12 +84,14 @@ h1 {
 
 @media screen and (max-width: 575px) {
   .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
+    gap: 24px;
   }
 
   .btn {
-    width: 100%;
     height: 48px;
+    &:not(.btn_icon) {
+      width: 100%;
+    }
   }
 }

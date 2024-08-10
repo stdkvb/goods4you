@@ -2,16 +2,11 @@ import { Link } from "react-router-dom";
 
 import styles from "./ItemCard.module.scss";
 import { catalogItem } from "../../types.ts";
-import { cartIcon, minusIcon, plusIcon } from "../../assets/icons.tsx";
+import Counter from "../counter/Counter.tsx";
 
 interface ItemCardProps {
   data: catalogItem;
 }
-
-const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  e.stopPropagation();
-  e.preventDefault();
-};
 
 const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
   return (
@@ -28,37 +23,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
             <span className={styles.name}>{data.name}</span>
             <span className={styles.price}>${data.price}</span>
           </div>
-          <div className={styles.counter}>
-            {data.count ? (
-              <>
-                <button
-                  className="btn btn_icon"
-                  onClick={handleClick}
-                  aria-label="add to cart"
-                >
-                  {minusIcon}
-                </button>
-                <span className={styles.count}>{`${data.count} item${
-                  data.count > 1 ? "s" : ""
-                }`}</span>
-                <button
-                  className="btn btn_icon"
-                  onClick={handleClick}
-                  aria-label="add to cart"
-                >
-                  {plusIcon}
-                </button>
-              </>
-            ) : (
-              <button
-                className="btn btn_icon"
-                onClick={handleClick}
-                aria-label="add to cart"
-              >
-                {cartIcon}
-              </button>
-            )}
-          </div>
+          <Counter value={data.count} />
         </div>
       </Link>
     </li>

@@ -100,4 +100,38 @@
     "question": "How can I return or exchange an item?",
     "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the 'My Orders' section to track your delivery status."
   }
+],
+"cartItems": [
+  {
+    "id": 1,
+    "name": "Essence Mascara Lash Princess",
+    "price": 110,
+    "imageUrl": "/src/assets/images/photo.png",
+    "count": 1,
+    "variant": "basic"
+  },
+  {
+    "id": 2,
+    "name": "Essence Mascara Lash Princess",
+    "price": 110,
+    "imageUrl": "/src/assets/images/photo.png",
+    "count": 1,
+    "variant": "hover"
+  },
+  {
+    "id": 3,
+    "name": "Essence Mascara Lash Princess",
+    "price": 110,
+    "imageUrl": "/src/assets/images/photo.png",
+    "count": 5,
+    "variant": "basic"
+  },
+  {
+    "id": 4,
+    "name": "Essence Mascara Lash Princess",
+    "price": 110,
+    "imageUrl": "/src/assets/images/photo.png",
+    "count": 1,
+    "variant": "deleted"
+  }
 ]}
