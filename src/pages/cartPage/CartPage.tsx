@@ -11,25 +11,30 @@ const CartPage = () => {
       <Helmet>
         <title>My cart | Goods4you</title>
       </Helmet>
-      <article className={`container ${styles.cart}`}>
-        <h1>My cart</h1>
-        <ul className={styles.list}>
-          {data.cartItems.map((item: catalogItem) => (
-            <CartItem key={item.id} data={item} />
-          ))}
-        </ul>
-        <ul className={styles.total}>
-          <li className={styles.totalCount}>
-            Total count <span>3 items</span>
-          </li>
-          <li className={styles.discount}>
-            Price without discount <span>$700</span>
-          </li>
-          <li className={styles.totalPrice}>
-            Total price <span>$590</span>
-          </li>
-        </ul>
-      </article>
+      <section
+        className={`container ${styles.cart}`}
+        aria-labelledby="cartPageTitle"
+      >
+        <div className={styles.wrapper}>
+          <h1 id="cartPageTitle">My cart</h1>
+          <ul className={styles.list} aria-label="items in cart">
+            {data.cartItems.map((item: catalogItem) => (
+              <CartItem key={item.id} data={item} />
+            ))}
+          </ul>
+          <ul className={styles.total} aria-label="cart totals">
+            <li className={styles.totalCount}>
+              Total count <span>3 items</span>
+            </li>
+            <li className={styles.discount}>
+              Price without discount <span>$700</span>
+            </li>
+            <li className={styles.totalPrice}>
+              Total price <span>$590</span>
+            </li>
+          </ul>
+        </div>
+      </section>
     </>
   );
 };

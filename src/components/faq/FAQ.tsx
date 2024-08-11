@@ -5,14 +5,18 @@ import Accordion from "../accordion/Accordion";
 
 const FAQ = () => {
   return (
-    <section className={`container ${styles.faq}`} id="faq">
+    <section
+      className={`container ${styles.faq}`}
+      id="faq"
+      aria-labelledby="faq-heading"
+    >
       <div className={styles.wrapper}>
-        <h2>FAQ</h2>
-        <ul className={styles.list}>
+        <h2 id="faq-heading">FAQ</h2>
+        <div className={styles.list} role="list" aria-labelledby="faq-heading">
           {data.faq.map((item: faqItem) => (
             <Accordion key={item.id} data={item} />
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

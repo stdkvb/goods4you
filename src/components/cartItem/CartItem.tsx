@@ -10,13 +10,20 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
-  console.log(data);
   return (
     <li className={`${styles.card} ${styles[data.variant]}`}>
       <div className={styles.left}>
-        <img src={data.imageUrl} />
+        <picture>
+          <source srcSet={data.imageUrlAvif} type="image/avif" />
+          <source srcSet={data.imageUrlWebp} type="image/webp" />
+          <img src={data.imageUrlPng} alt={data.name} />
+        </picture>
         <div className={styles.info}>
-          <Link className={styles.link} to={`/product/${data.id}`}>
+          <Link
+            className={styles.link}
+            to={`/product/${data.id}`}
+            aria-label={`view details of ${data.name}`}
+          >
             {data.name}
           </Link>
           <span>${data.price}</span>
@@ -24,11 +31,18 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
       </div>
       <div className={styles.right}>
         {data.variant == "deleted" ? (
-          <button className="btn btn_icon">{cartIcon}</button>
+          <button className="btn btn_icon" aria-label="icon button">
+            {cartIcon}
+          </button>
         ) : (
           <>
             <Counter value={data.count} />
-            <span className={styles.delete}>Delete</span>
+            <button
+              className={styles.delete}
+              aria-label={`delete ${data.name} from cart`}
+            >
+              Delete
+            </button>
           </>
         )}
       </div>

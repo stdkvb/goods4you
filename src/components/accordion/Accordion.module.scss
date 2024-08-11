@@ -1,5 +1,5 @@
 .accordion {
-  padding-top: 20px;
+  padding-top: 19px;
   border-top: solid 1px var(--white);
   display: flex;
   flex-direction: column;
@@ -13,7 +13,6 @@
     }
     .icon {
       transform: rotate(45deg);
-      scale: 1.1;
     }
   }
 
@@ -22,9 +21,13 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    gap: 10px;
+    min-height: 40px;
+    padding-right: 1px;
   }
 
   .icon {
+    height: 25px;
     transition: all var(--transitionDuration) ease;
     svg {
       width: 25px;
@@ -38,6 +41,7 @@
     font-weight: 400;
     line-height: 30px;
     color: var(--white);
+    text-align: left;
   }
 
   .content {

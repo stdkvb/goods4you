@@ -4,9 +4,7 @@ import Banner from "../../components/banner/Banner";
 import Catalog from "../../components/catalog/Catalog";
 import FAQ from "../../components/faq/FAQ";
 
-type Props = {};
-
-const HomePage = (props: Props) => {
+const HomePage = () => {
   return (
     <>
       <Helmet>

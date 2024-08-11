@@ -9,12 +9,18 @@ interface RatingProps {
 const Rating: React.FC<RatingProps> = ({ value }) => {
   const stars = setRating(value);
 
+  const ratingLabel = `Rating: ${value} out of 5`;
+
   return (
-    <div className={styles.rating}>
+    <div className={styles.rating} role="img" aria-label={ratingLabel}>
       {stars.map((star, i) => (
-        <div key={i} className={star == "active" ? `${styles.active}` : ""}>
+        <span
+          key={i}
+          className={star == "active" ? `${styles.active}` : ""}
+          aria-hidden="true"
+        >
           {starIcon}
-        </div>
+        </span>
       ))}
     </div>
   );

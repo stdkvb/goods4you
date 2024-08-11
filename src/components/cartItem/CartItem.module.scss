@@ -26,10 +26,10 @@
 .right {
   display: flex;
   gap: 10px;
-  justify-self: space-between;
   align-items: center;
   justify-content: space-between;
-  min-width: 274px;
+  min-width: 285px;
+  padding-right: 11px;
 }
 
 .info {

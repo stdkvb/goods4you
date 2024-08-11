@@ -12,10 +12,9 @@ function App() {
           name="description"
           content="Any products from famous brands with worldwide delivery"
         />
-        <title>Goods4you</title>
       </Helmet>
       <Header />
-      <main>
+      <main role="main">
         <Router />
       </main>
       <Footer />

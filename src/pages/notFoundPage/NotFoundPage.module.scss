@@ -13,5 +13,17 @@
 
   h1 {
     font-size: 28px;
+    color: var(--gray30);
+  }
+
+  p {
+    color: var(--gray30);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  a {
+    color: var(--gray30);
   }
 }

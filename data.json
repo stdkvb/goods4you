@@ -3,102 +3,141 @@
     "id": 1,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 2,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 1
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "hover"
   },
   {
     "id": 3,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 2
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 4,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 5,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 6,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 1,
+    "variant": "basic"
   },
   {
     "id": 7,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 8,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 9,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 10,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 11,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   },
   {
     "id": 12,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/item.png",
-    "count": 0
+    "imageUrlAvif": "/src/assets/images/item.avif",
+    "imageUrlWebp": "/src/assets/images/item.webp",
+    "imageUrlPng": "/src/assets/images/item.png",
+    "count": 0,
+    "variant": "basic"
   }
 ],
 "faq": [
   {
     "id": 1,
     "question": "How can I track the status of my order?",
-    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the 'My Orders' section to track your delivery status."
+    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the \"My Orders\" section to track your delivery status.",
+  "open": true
   },
   {
     "id": 2,
     "question": "What payment methods do you accept?",
-    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the 'My Orders' section to track your delivery status."
+    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the \"My Orders\" section to track your delivery status.",
+    "open": false
   },
   {
     "id": 3,
     "question": "How can I return or exchange an item?",
-    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the 'My Orders' section to track your delivery status."
+    "answer": "After placing your order, you will receive a confirmation email containing your order number and a tracking link. You can also log in to your account on our website and go to the \"My Orders\" section to track your delivery status.",
+    "open": false
   }
 ],
 "cartItems": [
@@ -106,7 +145,9 @@
     "id": 1,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/photo.png",
+    "imageUrlAvif": "/src/assets/images/photo.avif",
+    "imageUrlWebp": "/src/assets/images/photo.webp",
+    "imageUrlPng": "/src/assets/images/photo.png",
     "count": 1,
     "variant": "basic"
   },
@@ -114,7 +155,9 @@
     "id": 2,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/photo.png",
+    "imageUrlAvif": "/src/assets/images/photo.avif",
+    "imageUrlWebp": "/src/assets/images/photo.webp",
+    "imageUrlPng": "/src/assets/images/photo.png",
     "count": 1,
     "variant": "hover"
   },
@@ -122,7 +165,9 @@
     "id": 3,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/photo.png",
+    "imageUrlAvif": "/src/assets/images/photo.avif",
+    "imageUrlWebp": "/src/assets/images/photo.webp",
+    "imageUrlPng": "/src/assets/images/photo.png",
     "count": 5,
     "variant": "basic"
   },
@@ -130,8 +175,11 @@
     "id": 4,
     "name": "Essence Mascara Lash Princess",
     "price": 110,
-    "imageUrl": "/src/assets/images/photo.png",
+    "imageUrlAvif": "/src/assets/images/photo.avif",
+    "imageUrlWebp": "/src/assets/images/photo.webp",
+    "imageUrlPng": "/src/assets/images/photo.png",
     "count": 1,
     "variant": "deleted"
   }
-]}
+]
+}

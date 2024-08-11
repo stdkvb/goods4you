@@ -1,5 +1,6 @@
 export const cartIcon = (
   <svg
+    aria-hidden="true"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -16,6 +17,7 @@ export const cartIcon = (
 
 export const minusIcon = (
   <svg
+    aria-hidden="true"
     width="18"
     height="4"
     viewBox="0 0 18 4"
@@ -31,6 +33,7 @@ export const minusIcon = (
 
 export const plusIcon = (
   <svg
+    aria-hidden="true"
     width="18"
     height="18"
     viewBox="0 0 18 18"
@@ -50,10 +53,11 @@ export const plusIcon = (
 
 export const starIcon = (
   <svg
+    aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     width="16"
-    height="15"
-    viewBox="0 0 16 15"
+    height="16"
+    viewBox="0 0 16 16"
     fill="none"
   >
     <path
