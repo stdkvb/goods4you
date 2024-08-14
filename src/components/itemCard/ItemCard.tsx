@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 import styles from "./ItemCard.module.scss";
-import { catalogItem } from "../../types.ts";
+import { Product } from "../../types.ts";
 import Counter from "../counter/Counter.tsx";
 
 interface ItemCardProps {
-  data: catalogItem;
+  data: Product;
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ data }) => {

@@ -1,17 +1,26 @@
-export interface catalogItem {
+export interface Product {
   id: number;
-  name: string;
+  title: string;
   price: number;
-  imageUrlAvif: string;
-  imageUrlWebp: string;
-  imageUrlPng: string;
-  count: number;
-  variant: string;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedTotal: number;
+  thumbnail: string;
 }
 
-export interface faqItem {
+export interface FaqItem {
   id: number;
   question: string;
   answer: string;
   open: boolean;
+}
+
+export interface CartState {
+  products: Product[];
+  total: number;
+  discountedTotal: number;
+  totalQuantity: number;
+  status: "idle" | "pending" | "succeeded" | "failed";
+  error: null | string;
 }

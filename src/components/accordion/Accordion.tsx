@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "./Accordion.module.scss";
-import { faqItem } from "../../types";
+import { FaqItem } from "../../types";
 import { plusIcon } from "../../assets/icons";
 
 interface AccordionProps {
-  data: faqItem;
+  data: FaqItem;
 }
 
 const Accordion: React.FC<AccordionProps> = ({ data }) => {

@@ -2,7 +2,7 @@ import styles from "./Catalog.module.scss";
 import SearchBar from "../searchBar/SearchBar";
 import ItemCard from "../itemCard/ItemCard";
 import data from "../../../data.json";
-import { catalogItem } from "../../types";
+import { Product } from "../../types";
 
 const Catalog = () => {
   return (
@@ -15,7 +15,7 @@ const Catalog = () => {
         <h1 id="catalog-title">Catalog</h1>
         <SearchBar />
         <ul className={styles.list}>
-          {data.catalogItems.map((item: catalogItem) => (
+          {data.catalogItems.map((item: Product) => (
             <ItemCard key={item.id} data={item} />
           ))}
         </ul>
