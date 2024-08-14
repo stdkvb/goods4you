@@ -16,7 +16,7 @@ export const fetchCart = createAsyncThunk<CartState>(
   async () => {
     const response = await fetch(`https://dummyjson.com/carts/user/6`);
     const data = await response.json();
-    return data.carts[0];
+    return data.carts.length > 0 ? data.carts[0] : initialState;
   }
 );
 

@@ -1,11 +1,26 @@
+import { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useSelector } from "react-redux";
 
 import styles from "./Header.module.scss";
 import { cartIcon } from "../../assets/icons.tsx";
+import { CartState } from "../../types.ts";
+import { useAppDispatch } from "../../store/store";
+import { fetchCart } from "../../store/slices/cartSlice";
 
 const Header = () => {
   let location = useLocation();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
+
+  const cartTotalQuantity = useSelector(
+    (state: { cart: CartState }) => state.cart.totalQuantity
+  );
+
   return (
     <header className={`container ${styles.header}`} aria-label="header">
       <div className={styles.wrapper}>
@@ -37,12 +52,14 @@ const Header = () => {
           >
             Cart
             {cartIcon}
-            <span
-              className={styles.cartCounter}
-              aria-label="number of items in cart"
-            >
-              1
-            </span>
+            {cartTotalQuantity > 0 && (
+              <span
+                className={styles.cartCounter}
+                aria-label="number of items in cart"
+              >
+                {cartTotalQuantity}
+              </span>
+            )}
           </NavLink>
           <NavLink
             className="link disabled"
