@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import styles from "./ProductCard.module.scss";
-import { Product } from "../../types.ts";
+import { Product, CartState } from "../../types.ts";
 import Counter from "../counter/Counter.tsx";
 
 interface ProductCardProps {
@@ -9,6 +10,12 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const cartProduct = useSelector((state: { cart: CartState }) =>
+    state.cart.products.find((product) => product.id === data.id)
+  );
+
+  const quantity = cartProduct ? cartProduct.quantity : 0;
+
   return (
     <li className={styles.card}>
       <Link
@@ -29,9 +36,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         <div className={styles.info}>
           <div className={styles.description}>
             <span className={styles.name}>{data.title}</span>
-            <span className={styles.price}>${data.price}</span>
+            <span className={styles.price}>
+              $
+              {((data.price * (100 - data.discountPercentage)) / 100).toFixed(
+                2
+              )}
+            </span>
           </div>
-          <Counter value={0} />
+          <Counter value={quantity} />
         </div>
       </Link>
     </li>
