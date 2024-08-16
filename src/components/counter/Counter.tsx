@@ -1,11 +1,22 @@
+import { useSelector, shallowEqual } from "react-redux";
 import styles from "./Counter.module.scss";
 import { cartIcon, minusIcon, plusIcon } from "../../assets/icons.tsx";
+import { CartState } from "../../types.ts";
 
 interface CounterProps {
-  value: number;
+  id: number;
+  buttonText?: string;
 }
 
-const Counter: React.FC<CounterProps> = ({ value }) => {
+const Counter: React.FC<CounterProps> = ({ id, buttonText }) => {
+  const cartProduct = useSelector(
+    (state: { cart: CartState }) =>
+      state.cart.products.find((product) => product.id === id),
+    shallowEqual
+  );
+
+  const quantity = cartProduct ? cartProduct.quantity : 0;
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     e.preventDefault();
@@ -17,7 +28,7 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
       role="group"
       aria-labelledby="counter-label"
     >
-      {value ? (
+      {quantity > 0 ? (
         <>
           <span id="counter-label" className="hidden">
             Product counter controls
@@ -30,8 +41,8 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
             >
               {minusIcon}
             </button>
-            <span className={styles.count}>{`${value} item${
-              value > 1 ? "s" : ""
+            <span className={styles.count}>{`${quantity} item${
+              quantity > 1 ? "s" : ""
             }`}</span>
             <button
               className="btn btn_icon"
@@ -44,11 +55,11 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
         </>
       ) : (
         <button
-          className={`btn btn_icon ${styles.add}`}
+          className={`btn ${!buttonText && "btn_icon"} ${styles.add}`}
           onClick={handleClick}
           aria-label="add to cart"
         >
-          {cartIcon}
+          {buttonText || cartIcon}
         </button>
       )}
     </div>

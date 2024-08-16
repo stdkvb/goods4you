@@ -7,6 +7,14 @@ export interface Product {
   discountPercentage: number;
   discountedTotal: number;
   thumbnail: string;
+  images: [];
+  tags: [];
+  availabilityStatus: string;
+  stock: number;
+  description: string;
+  warrantyInformation: string;
+  shippingInformation: string;
+  rating: number;
 }
 
 export interface FaqItem {
