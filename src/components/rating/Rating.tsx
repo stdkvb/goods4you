@@ -1,10 +1,7 @@
 import styles from "./Rating.module.scss";
 import setRating from "../../utils/setRating";
 import { starIcon } from "../../assets/icons";
-
-interface RatingProps {
-  value: number;
-}
+import { RatingProps } from "../../types";
 
 const Rating: React.FC<RatingProps> = ({ value }) => {
   const stars = setRating(value);

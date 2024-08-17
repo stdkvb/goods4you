@@ -1,21 +1,20 @@
 import { useSelector, shallowEqual } from "react-redux";
 import styles from "./Counter.module.scss";
 import { cartIcon, minusIcon, plusIcon } from "../../assets/icons.tsx";
-import { CartState } from "../../types.ts";
+import { CartState, CounterProps } from "../../types.ts";
 
-interface CounterProps {
-  id: number;
-  buttonText?: string;
-}
-
-const Counter: React.FC<CounterProps> = ({ id, buttonText }) => {
+const Counter: React.FC<CounterProps> = ({
+  id,
+  buttonText,
+  initialQuantity = 0,
+}) => {
   const cartProduct = useSelector(
     (state: { cart: CartState }) =>
       state.cart.products.find((product) => product.id === id),
     shallowEqual
   );
 
-  const quantity = cartProduct ? cartProduct.quantity : 0;
+  const quantity = cartProduct ? cartProduct.quantity : initialQuantity;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

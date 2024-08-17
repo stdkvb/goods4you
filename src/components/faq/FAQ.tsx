@@ -1,5 +1,5 @@
 import styles from "./FAQ.module.scss";
-import data from "../../../data.json";
+import data from "./data.json";
 import { FaqItem } from "../../types";
 import Accordion from "../accordion/Accordion";
 

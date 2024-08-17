@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
 
 import styles from "./ProductCard.module.scss";
-import { Product } from "../../types.ts";
+import { ProductCardProps } from "../../types.ts";
 import Counter from "../counter/Counter.tsx";
-
-interface ProductCardProps {
-  data: Product;
-}
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   return (

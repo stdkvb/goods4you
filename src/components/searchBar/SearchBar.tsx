@@ -1,9 +1,6 @@
 import { debounce } from "lodash";
 import styles from "./SearchBar.module.scss";
-
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
+import { SearchBarProps } from "../../types";
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const handleSearchInput = debounce(

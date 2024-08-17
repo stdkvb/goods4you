@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
+    "@storybook/builder-vite": "^8.2.9",
     "autoprefixer": "^10.4.20",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "lodash": "^4.17.21",

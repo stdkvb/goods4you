@@ -21,7 +21,6 @@ export interface FaqItem {
   id: number;
   question: string;
   answer: string;
-  open: boolean;
 }
 
 export interface CartState {
@@ -31,4 +30,30 @@ export interface CartState {
   totalQuantity: number;
   status: "idle" | "pending" | "succeeded" | "failed";
   error: null | string;
+}
+
+export interface AccordionProps {
+  data: FaqItem;
+}
+
+export interface CartItemProps {
+  data: Product;
+}
+
+export interface CounterProps {
+  id: number;
+  buttonText?: string;
+  initialQuantity?: number;
+}
+
+export interface ProductCardProps {
+  data: Product;
+}
+
+export interface RatingProps {
+  value: number;
+}
+
+export interface SearchBarProps {
+  onSearch: (query: string) => void;
 }

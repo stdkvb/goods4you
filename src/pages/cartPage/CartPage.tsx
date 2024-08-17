@@ -25,7 +25,7 @@ const CartPage = () => {
             )}
             {cart.status == "failed" && (
               <span className={styles.message}>
-                Error occured: {cart.error}
+                Error occurred: {cart.error}
               </span>
             )}
             {cart.status == "succeeded" && cart.totalQuantity !== 0 ? (

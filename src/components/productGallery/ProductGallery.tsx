@@ -34,6 +34,13 @@ const ProductGallery = ({
                 src={el}
                 alt={`preview ${index + 1} of product`}
                 onClick={() => onImageClick(index)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLImageElement>) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    onImageClick(index);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
               />
             </picture>
           ))}

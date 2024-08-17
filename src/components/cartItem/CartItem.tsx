@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 
 import styles from "./CartItem.module.scss";
-import { Product } from "../../types";
+import { CartItemProps } from "../../types";
 import Counter from "../counter/Counter";
-import { cartIcon } from "../../assets/icons";
-
-interface CartItemProps {
-  data: Product;
-}
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
   return (
@@ -32,17 +27,13 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         </div>
       </div>
       <div className={styles.right}>
-        <Counter value={data.quantity} />
+        <Counter id={data.id} />
         <button
           className={styles.delete}
           aria-label={`delete ${data.title} from cart`}
         >
           Delete
         </button>
-
-        {/* <button className="btn btn_icon" aria-label="icon button">
-                    {cartIcon}
-                  </button> */}
       </div>
     </li>
   );

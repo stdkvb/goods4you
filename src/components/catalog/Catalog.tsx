@@ -20,7 +20,7 @@ const Catalog = () => {
         skip === 0 ? data.products : [...prevCatalog, ...data.products]
       );
     }
-  }, [data, skip]);
+  }, [data]);
 
   const handleSearch = (query: string) => {
     setSkip(0);
