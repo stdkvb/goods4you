@@ -169,6 +169,16 @@
         line-height: 37px;
       }
     }
+
+    .info {
+      flex-direction: column;
+      padding: 0;
+      align-items: flex-start;
+    }
+
+    .prices {
+      border: none;
+    }
   }
 }
 

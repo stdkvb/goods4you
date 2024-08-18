@@ -9,13 +9,6 @@ import "../../styles/vars.scss";
 export default {
   title: "Molecules/Counter",
   component: Counter,
-  argTypes: {
-    quantity: {
-      control: "number",
-      description: "Quantity of the product",
-      defaultValue: 1,
-    },
-  },
 } as Meta;
 
 const Template: StoryFn<CounterProps> = (args) => (
