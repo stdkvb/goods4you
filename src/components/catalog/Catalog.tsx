@@ -38,7 +38,7 @@ const Catalog = () => {
       aria-labelledby="catalog-title"
     >
       <div className={styles.wrapper}>
-        <h1 id="catalog-title">Catalog</h1>
+        <h2 id="catalog-title">Catalog</h2>
         <SearchBar onSearch={handleSearch} />
         {isLoading && <span className={styles.message}>Loading...</span>}
         {error && (

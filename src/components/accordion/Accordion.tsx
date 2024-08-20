@@ -29,6 +29,7 @@ const Accordion: React.FC<AccordionProps> = ({ data }) => {
         role="region"
         aria-labelledby={`accordion-${data.id}`}
       >
+        <div className={styles.divider}></div>
         <p>{data.answer}</p>
       </div>
     </div>

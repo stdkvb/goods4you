@@ -9,11 +9,11 @@ const Banner = () => {
       role="banner"
     >
       <div className={styles.wrapper}>
-        <h2 className={styles.title} id="banner-title">
+        <h1 className={styles.title} id="banner-title">
           Any products from famous brands
           <br />
           with worldwide delivery
-        </h2>
+        </h1>
         <p className={styles.description}>
           We sell smartphones, laptops, clothes, shoes <br />
           and many other products at low prices

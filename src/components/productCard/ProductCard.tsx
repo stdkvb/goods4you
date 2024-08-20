@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
               )}
             </span>
           </div>
-          <Counter id={data.id} />
+          <Counter id={data.id} className={styles.counter} />
         </div>
       </Link>
     </li>

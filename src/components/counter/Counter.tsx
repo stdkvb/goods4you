@@ -7,6 +7,7 @@ const Counter: React.FC<CounterProps> = ({
   id,
   buttonText,
   initialQuantity = 0,
+  className,
 }) => {
   const cartProduct = useSelector(
     (state: { cart: CartState }) =>
@@ -23,7 +24,7 @@ const Counter: React.FC<CounterProps> = ({
 
   return (
     <div
-      className={styles.counter}
+      className={`${styles.counter} ${className}`}
       role="group"
       aria-labelledby="counter-label"
     >
