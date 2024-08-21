@@ -43,7 +43,7 @@ const Catalog = () => {
         {isLoading && <span className={styles.message}>Loading...</span>}
         {error && (
           <span className={styles.message}>
-            Error occurred, try again later
+            Error occurred, try again later.
           </span>
         )}
         {!isLoading && data?.total == 0 && (

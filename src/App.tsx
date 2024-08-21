@@ -1,10 +1,16 @@
 import { HelmetProvider, Helmet } from "react-helmet-async";
+import { useSelector } from "react-redux";
 
+import { AuthState } from "./types";
 import Router from "./router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  const loggedIn = useSelector(
+    (state: { authSlice: AuthState }) => state.authSlice.loggedIn
+  );
+
   return (
     <HelmetProvider>
       <Helmet>
@@ -17,7 +23,7 @@ function App() {
       <main role="main">
         <Router />
       </main>
-      <Footer />
+      {loggedIn && <Footer />}
     </HelmetProvider>
   );
 }

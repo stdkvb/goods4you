@@ -6,7 +6,9 @@ import { CartState, Product } from "../../types";
 import CartItem from "../../components/cartItem/CartItem";
 
 const CartPage = () => {
-  const cart = useSelector((state: { cart: CartState }) => state.cart);
+  const cart = useSelector(
+    (state: { cartSlice: CartState }) => state.cartSlice
+  );
 
   return (
     <>

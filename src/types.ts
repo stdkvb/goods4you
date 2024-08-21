@@ -58,3 +58,8 @@ export interface RatingProps {
 export interface SearchBarProps {
   onSearch: (query: string) => void;
 }
+
+export interface AuthState {
+  loggedIn: boolean;
+  token: string | null;
+}

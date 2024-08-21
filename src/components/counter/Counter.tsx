@@ -10,8 +10,8 @@ const Counter: React.FC<CounterProps> = ({
   className,
 }) => {
   const cartProduct = useSelector(
-    (state: { cart: CartState }) =>
-      state.cart.products.find((product) => product.id === id),
+    (state: { cartSlice: CartState }) =>
+      state.cartSlice.products.find((product) => product.id === id),
     shallowEqual
   );
 
