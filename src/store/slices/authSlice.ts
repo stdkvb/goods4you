@@ -4,7 +4,7 @@ import { AuthState } from "../../types";
 
 const initialState: AuthState = {
   loggedIn: false,
-  token: null,
+  token: "",
 };
 
 export const authSlice: Slice<AuthState> = createSlice({
@@ -15,9 +15,12 @@ export const authSlice: Slice<AuthState> = createSlice({
       state.token = action.payload;
       state.loggedIn = !!action.payload;
     },
+    clearToken(state) {
+      state = initialState;
+    },
   },
 });
 
-export const { setToken } = authSlice.actions;
+export const { setToken, clearToken } = authSlice.actions;
 
 export default authSlice.reducer;

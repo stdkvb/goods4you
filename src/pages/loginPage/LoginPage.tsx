@@ -8,10 +8,12 @@ import styles from "./LoginPage.module.scss";
 import { useLogInMutation } from "../../store/api/authApi";
 import { useAppDispatch } from "../../store/store";
 import { setToken } from "../../store/slices/authSlice";
+import { setUser } from "../../store/slices/userSlice";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const [logIn, { isLoading, error, isSuccess, data }] = useLogInMutation();
 
   const validationSchema = yup.object({
@@ -32,8 +34,13 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setToken(data.token));
-      navigate("/");
+      const token = data.token;
+      if (token) {
+        dispatch(setToken(token));
+        localStorage.setItem("authToken", token);
+        navigate("/");
+      }
+      dispatch(setUser({ id: data.id }));
     }
   }, [isSuccess, data, dispatch, navigate]);
 

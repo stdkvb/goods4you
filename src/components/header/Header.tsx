@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 import styles from "./Header.module.scss";
 import { cartIcon } from "../../assets/icons.tsx";
-import { CartState, AuthState } from "../../types.ts";
+import { CartState, AuthState, UserState } from "../../types.ts";
 import { useAppDispatch } from "../../store/store";
 import { fetchCart } from "../../store/slices/cartSlice";
 
@@ -23,6 +23,10 @@ const Header = () => {
 
   const loggedIn = useSelector(
     (state: { authSlice: AuthState }) => state.authSlice.loggedIn
+  );
+
+  const user = useSelector(
+    (state: { userSlice: UserState }) => state.userSlice
   );
 
   return (
@@ -72,7 +76,7 @@ const Header = () => {
               aria-label="user profile"
               aria-disabled="true"
             >
-              Johnson Smith
+              {`${user.firstName} ${user.lastName}`}
             </NavLink>
           </nav>
         )}

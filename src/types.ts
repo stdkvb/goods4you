@@ -61,5 +61,11 @@ export interface SearchBarProps {
 
 export interface AuthState {
   loggedIn: boolean;
-  token: string | null;
+  token: string;
+}
+
+export interface UserState {
+  id: number | null;
+  firstName: string;
+  lastName: string;
 }
