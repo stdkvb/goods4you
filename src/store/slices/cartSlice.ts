@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { CartState } from "../../types";
+import { RootState } from "../store";
 
 const initialState: CartState = {
   products: [],
@@ -13,8 +14,14 @@ const initialState: CartState = {
 
 export const fetchCart = createAsyncThunk<CartState>(
   "cart/fetchCart",
-  async () => {
-    const response = await fetch(`https://dummyjson.com/carts/user/6`);
+  async (_, { getState }) => {
+    const state = getState() as RootState;
+    const token = state.authSlice.token;
+    const response = await fetch(`https://dummyjson.com/carts/user/6`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data.carts.length > 0 ? data.carts[0] : initialState;
   }
