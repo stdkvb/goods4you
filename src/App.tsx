@@ -7,6 +7,7 @@ import { useAppDispatch } from "./store/store";
 import { AuthState } from "./types";
 import { setToken, clearToken } from "./store/slices/authSlice";
 import { setUser } from "./store/slices/userSlice";
+import Loader from "./components/loader/Loader";
 import Router from "./router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -50,13 +51,17 @@ function App() {
 
     if (userData) {
       dispatch(
-        setUser({ firstName: userData.firstName, lastName: userData.lastName })
+        setUser({
+          id: userData.id,
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+        })
       );
     }
   }, [userData, userError, navigate, dispatch, loadingToken]);
 
   if (loadingToken || userLoading) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

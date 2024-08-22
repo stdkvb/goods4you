@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 import styles from "./LoginPage.module.scss";
+import Loader from "../../components/loader/Loader";
 import { useLogInMutation } from "../../store/api/authApi";
 import { useAppDispatch } from "../../store/store";
 import { setToken } from "../../store/slices/authSlice";
@@ -43,6 +44,10 @@ const LoginPage = () => {
       dispatch(setUser({ id: data.id }));
     }
   }, [isSuccess, data, dispatch, navigate]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -97,7 +102,7 @@ const LoginPage = () => {
             <button className="btn" type="submit">
               Sign in
             </button>
-            {isLoading && <span className={styles.message}>Loading...</span>}
+
             {error && (
               <span className={styles.message}>Error occurred, try again.</span>
             )}

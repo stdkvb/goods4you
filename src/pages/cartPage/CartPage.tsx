@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 
 import styles from "./CartPage.module.scss";
+import Loader from "../../components/loader/Loader";
 import { CartState, Product } from "../../types";
 import CartItem from "../../components/cartItem/CartItem";
 
@@ -22,15 +23,15 @@ const CartPage = () => {
         <div className={styles.wrapper}>
           <h1 id="cartPageTitle">My cart</h1>
           <div className={styles.content}>
-            {cart.status == "pending" && (
-              <span className={styles.message}>Loading...</span>
-            )}
+            {cart.status == "pending" && <Loader />}
             {cart.status == "failed" && (
               <span className={styles.message}>
                 Error occurred: {cart.error}
               </span>
             )}
-            {cart.status == "succeeded" && cart.totalQuantity !== 0 ? (
+            {cart.status == "succeeded" &&
+            cart.totalQuantity &&
+            cart.totalQuantity > 0 ? (
               <>
                 <ul className={styles.list} aria-label="items in cart">
                   {cart.products.map((item: Product) => (
@@ -42,7 +43,7 @@ const CartPage = () => {
                     Total count{" "}
                     <span>
                       {cart.totalQuantity} item
-                      {cart.totalQuantity > 1 ? "s" : ""}
+                      {cart.totalQuantity && cart.totalQuantity > 1 ? "s" : ""}
                     </span>
                   </li>
                   <li className={styles.discount}>

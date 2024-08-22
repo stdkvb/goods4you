@@ -5,9 +5,9 @@ import { RootState } from "../store";
 
 const initialState: CartState = {
   products: [],
-  totalQuantity: 0,
-  total: 0,
-  discountedTotal: 0,
+  totalQuantity: null,
+  total: null,
+  discountedTotal: null,
   status: "idle",
   error: null,
 };
@@ -17,12 +17,19 @@ export const fetchCart = createAsyncThunk<CartState>(
   async (_, { getState }) => {
     const state = getState() as RootState;
     const token = state.authSlice.token;
-    const response = await fetch(`https://dummyjson.com/carts/user/6`, {
+    const userId = state.userSlice.id;
+
+    if (!userId) {
+      return initialState;
+    }
+
+    const response = await fetch(`https://dummyjson.com/carts/user/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
+
     return data.carts.length > 0 ? data.carts[0] : initialState;
   }
 );
@@ -37,15 +44,15 @@ export const cartSlice = createSlice({
         state.status = "pending";
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.products = action.payload.products;
         state.totalQuantity = action.payload.totalQuantity;
         state.total = action.payload.total;
         state.discountedTotal = action.payload.discountedTotal;
+        state.status = "succeeded";
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.status = "failed";
         state.error = action.error.message || null;
+        state.status = "failed";
       });
   },
 });

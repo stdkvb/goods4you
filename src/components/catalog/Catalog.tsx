@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+
 import styles from "./Catalog.module.scss";
 import ProductCard from "../productCard/ProductCard";
 import SearchBar from "../searchBar/SearchBar";
+import Loader from "../loader/Loader";
 import { Product } from "../../types";
 import { useGetProductsQuery } from "../../store/api/productsApi";
 
@@ -40,7 +42,7 @@ const Catalog = () => {
       <div className={styles.wrapper}>
         <h2 id="catalog-title">Catalog</h2>
         <SearchBar onSearch={handleSearch} />
-        {isLoading && <span className={styles.message}>Loading...</span>}
+        {isLoading && <Loader />}
         {error && (
           <span className={styles.message}>
             Error occurred, try again later.

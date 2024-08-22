@@ -17,7 +17,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
@@ -120,6 +121,14 @@ input {
 .hidden {
   position: fixed;
   transform: scale(0);
+}
+
+.loader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 @media screen and (max-width: 992px) {

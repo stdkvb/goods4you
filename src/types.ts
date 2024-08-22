@@ -25,9 +25,9 @@ export interface FaqItem {
 
 export interface CartState {
   products: Product[];
-  total: number;
-  discountedTotal: number;
-  totalQuantity: number;
+  total: number | null;
+  discountedTotal: number | null;
+  totalQuantity: number | null;
   status: "idle" | "pending" | "succeeded" | "failed";
   error: null | string;
 }
