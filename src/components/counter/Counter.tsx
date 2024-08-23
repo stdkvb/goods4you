@@ -2,13 +2,18 @@ import { useSelector, shallowEqual } from "react-redux";
 import styles from "./Counter.module.scss";
 import { cartIcon, minusIcon, plusIcon } from "../../assets/icons.tsx";
 import { CartState, CounterProps } from "../../types.ts";
+import { useAppDispatch } from "../../store/store.ts";
+import { updateCart } from "../../store/slices/cartSlice.ts";
 
 const Counter: React.FC<CounterProps> = ({
   id,
   buttonText,
   initialQuantity = 0,
   className,
+  stock,
 }) => {
+  const dispatch = useAppDispatch();
+
   const cartProduct = useSelector(
     (state: { cartSlice: CartState }) =>
       state.cartSlice.products.find((product) => product.id === id),
@@ -17,9 +22,16 @@ const Counter: React.FC<CounterProps> = ({
 
   const quantity = cartProduct ? cartProduct.quantity : initialQuantity;
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    e.preventDefault();
+  const handleAddToCart = () => {
+    dispatch(updateCart({ productId: id, quantityChange: 1 }));
+  };
+
+  const handleIncrease = () => {
+    dispatch(updateCart({ productId: id, quantityChange: 1 }));
+  };
+
+  const handleDecrease = () => {
+    dispatch(updateCart({ productId: id, quantityChange: -1 }));
   };
 
   return (
@@ -27,6 +39,10 @@ const Counter: React.FC<CounterProps> = ({
       className={`${styles.counter} ${className}`}
       role="group"
       aria-labelledby="counter-label"
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
     >
       {quantity > 0 ? (
         <>
@@ -36,7 +52,7 @@ const Counter: React.FC<CounterProps> = ({
           <div className={styles.buttons}>
             <button
               className="btn btn_icon"
-              onClick={handleClick}
+              onClick={handleDecrease}
               aria-label="decrease item count"
             >
               {minusIcon}
@@ -45,8 +61,8 @@ const Counter: React.FC<CounterProps> = ({
               quantity > 1 ? "s" : ""
             }`}</span>
             <button
-              className="btn btn_icon"
-              onClick={handleClick}
+              className={`btn btn_icon ${quantity == stock && "disabled"}`}
+              onClick={handleIncrease}
               aria-label="increase item count"
             >
               {plusIcon}
@@ -56,7 +72,7 @@ const Counter: React.FC<CounterProps> = ({
       ) : (
         <button
           className={`btn ${!buttonText && "btn_icon"} ${styles.add}`}
-          onClick={handleClick}
+          onClick={handleAddToCart}
           aria-label="add to cart"
         >
           {buttonText || cartIcon}

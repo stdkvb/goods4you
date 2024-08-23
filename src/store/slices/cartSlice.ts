@@ -34,6 +34,59 @@ export const fetchCart = createAsyncThunk<CartState>(
   }
 );
 
+export const updateCart = createAsyncThunk<
+  CartState,
+  { productId: number; quantityChange: number }
+>("cart/updateCart", async ({ productId, quantityChange }, { getState }) => {
+  const state = getState() as RootState;
+  const token = state.authSlice.token;
+  const userId = state.userSlice.id;
+
+  if (!userId) {
+    return initialState;
+  }
+
+  const currentProducts: { id: number; quantity: number }[] =
+    state.cartSlice.products.map((product) => ({
+      id: product.id,
+      quantity: product.quantity,
+    }));
+
+  const productIndex = currentProducts.findIndex(
+    (product) => product.id === productId
+  );
+
+  if (productIndex !== -1) {
+    const updatedQuantity =
+      currentProducts[productIndex].quantity + quantityChange;
+    if (updatedQuantity <= 0) {
+      currentProducts.splice(productIndex, 1);
+    } else {
+      currentProducts[productIndex].quantity = updatedQuantity;
+    }
+  } else if (quantityChange > 0) {
+    currentProducts.push({
+      id: productId,
+      quantity: quantityChange,
+    });
+  }
+
+  const response = await fetch(`https://dummyjson.com/carts/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      merge: false,
+      products: currentProducts,
+    }),
+  });
+
+  const data = await response.json();
+  return data;
+});
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -51,6 +104,20 @@ export const cartSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(fetchCart.rejected, (state, action) => {
+        state.error = action.error.message || null;
+        state.status = "failed";
+      })
+      .addCase(updateCart.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(updateCart.fulfilled, (state, action) => {
+        state.products = action.payload.products;
+        state.totalQuantity = action.payload.totalQuantity;
+        state.total = action.payload.total;
+        state.discountedTotal = action.payload.discountedTotal;
+        state.status = "succeeded";
+      })
+      .addCase(updateCart.rejected, (state, action) => {
         state.error = action.error.message || null;
         state.status = "failed";
       });

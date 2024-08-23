@@ -73,7 +73,11 @@ const ProductPage = () => {
                     Your discount: <span>{data.discountPercentage}%</span>
                   </div>
                 </div>
-                <Counter id={data.id} buttonText="Add to cart" />
+                <Counter
+                  id={data.id}
+                  buttonText="Add to cart"
+                  stock={data.stock}
+                />
               </div>
             </section>
           </article>

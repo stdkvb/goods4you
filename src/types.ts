@@ -45,6 +45,7 @@ export interface CounterProps {
   buttonText?: string;
   initialQuantity?: number;
   className?: string;
+  stock?: number;
 }
 
 export interface ProductCardProps {
