@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { AuthState } from "../types";
+import { UserState } from "../types";
 import PrivateRoute from "./PrivateRoute";
 import HomePage from "../pages/homePage/HomePage";
 import ProductPage from "../pages/productPage/ProductPage";
@@ -11,7 +11,7 @@ import LoginPage from "../pages/loginPage/LoginPage";
 
 const Router = () => {
   const loggedIn = useSelector(
-    (state: { authSlice: AuthState }) => state.authSlice.loggedIn
+    (state: { userSlice: UserState }) => state.userSlice.loggedIn
   );
 
   return (

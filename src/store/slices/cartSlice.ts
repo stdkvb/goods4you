@@ -16,7 +16,7 @@ export const fetchCart = createAsyncThunk<CartState>(
   "cart/fetchCart",
   async (_, { getState }) => {
     const state = getState() as RootState;
-    const token = state.authSlice.token;
+    const token = localStorage.getItem("authToken");
     const userId = state.userSlice.id;
 
     if (!userId) {
@@ -39,7 +39,7 @@ export const updateCart = createAsyncThunk<
   { productId: number; quantityChange: number }
 >("cart/updateCart", async ({ productId, quantityChange }, { getState }) => {
   const state = getState() as RootState;
-  const token = state.authSlice.token;
+  const token = localStorage.getItem("authToken");
   const userId = state.userSlice.id;
 
   if (!userId) {
@@ -57,18 +57,15 @@ export const updateCart = createAsyncThunk<
   );
 
   if (productIndex !== -1) {
-    const updatedQuantity =
-      currentProducts[productIndex].quantity + quantityChange;
-    if (updatedQuantity <= 0) {
-      currentProducts.splice(productIndex, 1);
-    } else {
-      currentProducts[productIndex].quantity = updatedQuantity;
-    }
+    currentProducts[productIndex] = {
+      ...currentProducts[productIndex],
+      quantity:
+        currentProducts[productIndex].quantity + quantityChange >= 0
+          ? currentProducts[productIndex].quantity + quantityChange
+          : 0,
+    };
   } else if (quantityChange > 0) {
-    currentProducts.push({
-      id: productId,
-      quantity: quantityChange,
-    });
+    currentProducts.push({ id: productId, quantity: quantityChange });
   }
 
   const response = await fetch(`https://dummyjson.com/carts/${userId}`, {

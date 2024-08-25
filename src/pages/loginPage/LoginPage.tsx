@@ -8,7 +8,6 @@ import styles from "./LoginPage.module.scss";
 import Loader from "../../components/loader/Loader";
 import { useLogInMutation } from "../../store/api/authApi";
 import { useAppDispatch } from "../../store/store";
-import { setToken } from "../../store/slices/authSlice";
 import { setUser } from "../../store/slices/userSlice";
 
 const LoginPage = () => {
@@ -37,7 +36,7 @@ const LoginPage = () => {
     if (isSuccess) {
       const token = data.token;
       if (token) {
-        dispatch(setToken(token));
+        dispatch(setUser({ loggedIn: true }));
         localStorage.setItem("authToken", token);
         navigate("/");
       }

@@ -60,12 +60,8 @@ export interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
-export interface AuthState {
-  loggedIn: boolean;
-  token: string;
-}
-
 export interface UserState {
+  loggedIn: boolean;
   id: number | null;
   firstName: string;
   lastName: string;

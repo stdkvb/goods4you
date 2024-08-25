@@ -27,7 +27,7 @@ const CartPage = () => {
                 Error occurred: {cart.error}
               </span>
             )}
-            {cart.totalQuantity && cart.totalQuantity > 0 ? (
+            {cart.products && cart.products.length > 0 ? (
               <>
                 <ul className={styles.list} aria-label="items in cart">
                   {cart.products.map((item: Product) => (
@@ -51,7 +51,7 @@ const CartPage = () => {
                   </li>
                 </ul>
               </>
-            ) : cart.status == "succeeded" && cart.totalQuantity === 0 ? (
+            ) : cart.status == "succeeded" && cart.products.length === 0 ? (
               <span className={styles.message}>No items</span>
             ) : null}
           </div>

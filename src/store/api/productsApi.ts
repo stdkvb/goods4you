@@ -1,15 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { Product } from "../../types";
-import { RootState } from "../store";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dummyjson.com/",
-    prepareHeaders: (headers, { getState }) => {
-      const state = getState() as RootState;
-      const token = state.authSlice.token;
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("authToken");
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }

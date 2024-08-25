@@ -4,6 +4,13 @@ export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dummyjson.com/",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("authToken");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints: (build) => ({
     logIn: build.mutation({
@@ -13,7 +20,10 @@ export const authApi = createApi({
         body,
       }),
     }),
+    getUser: build.query({
+      query: () => `auth/me`,
+    }),
   }),
 });
 
-export const { useLogInMutation } = authApi;
+export const { useLogInMutation, useGetUserQuery } = authApi;
