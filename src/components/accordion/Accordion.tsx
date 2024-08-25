@@ -11,12 +11,16 @@ const Accordion: React.FC<AccordionProps> = ({ data }) => {
   };
 
   return (
-    <div className={`${styles.accordion} ${isActive ? styles.active : ""}`}>
+    <div
+      className={`${styles.accordion} ${isActive ? styles.active : ""}`}
+      data-testid="accordion"
+    >
       <button
         className={styles.head}
         aria-expanded={isActive}
         aria-controls={`content-${data.id}`}
         onClick={handleToggle}
+        data-testid="accordion-button"
       >
         <h3 className={styles.title}>{data.question}</h3>
         <span className={`${styles.icon} ${isActive ? styles.active : ""}`}>

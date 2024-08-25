@@ -25,6 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         placeholder="Search by title"
         aria-label="search in catalog by title"
         onChange={handleSearchInput}
+        data-testid="search-input"
       />
     </div>
   );
