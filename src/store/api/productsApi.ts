@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { Product } from "../../types";
+import { baseUrl } from "../../config";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dummyjson.com/",
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("authToken");
       if (token) {
@@ -19,8 +20,15 @@ export const productsApi = createApi({
       { products: Product[]; total: number },
       { search: string; skip: number }
     >({
-      query: ({ search, skip }) =>
-        `/products/search?q=${search}&limit=12&skip=${skip}`,
+      query: ({ search, skip }) => {
+        const params = new URLSearchParams({
+          q: search,
+          limit: "12",
+          skip: skip.toString(),
+        });
+
+        return `/products/search?${params.toString()}`;
+      },
     }),
     getProductById: build.query<Product, { id: string | undefined }>({
       query: ({ id }) => `/products/${id}`,

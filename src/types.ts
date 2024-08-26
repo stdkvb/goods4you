@@ -27,6 +27,7 @@ export interface CartState {
   products: Product[];
   total: number | null;
   discountedTotal: number | null;
+  totalProducts: number | null;
   totalQuantity: number | null;
   status: "idle" | "pending" | "succeeded" | "failed";
   error: null | string;

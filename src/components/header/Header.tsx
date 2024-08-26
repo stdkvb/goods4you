@@ -61,7 +61,7 @@ const Header = () => {
             >
               Cart
               {cartIcon}
-              {cartTotalQuantity > 0 && (
+              {cartTotalQuantity && cartTotalQuantity > 0 && (
                 <span
                   className={styles.cartCounter}
                   aria-label="number of items in cart"

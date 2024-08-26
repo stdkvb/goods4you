@@ -38,8 +38,8 @@ const CartPage = () => {
                   <li className={styles.totalCount}>
                     Total count{" "}
                     <span>
-                      {cart.totalQuantity} item
-                      {cart.totalQuantity && cart.totalQuantity > 1 ? "s" : ""}
+                      {cart.totalProducts} item
+                      {cart.totalProducts && cart.totalProducts > 1 ? "s" : ""}
                     </span>
                   </li>
                   <li className={styles.discount}>

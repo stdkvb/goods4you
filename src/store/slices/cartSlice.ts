@@ -2,9 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { CartState } from "../../types";
 import { RootState } from "../store";
+import { baseUrl } from "../../config";
 
 const initialState: CartState = {
   products: [],
+  totalProducts: null,
   totalQuantity: null,
   total: null,
   discountedTotal: null,
@@ -23,7 +25,9 @@ export const fetchCart = createAsyncThunk<CartState>(
       return initialState;
     }
 
-    const response = await fetch(`https://dummyjson.com/carts/user/${userId}`, {
+    const url = new URL(`${baseUrl}/carts/user/${userId}`);
+
+    const response = await fetch(url.toString(), {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -68,7 +72,9 @@ export const updateCart = createAsyncThunk<
     currentProducts.push({ id: productId, quantity: quantityChange });
   }
 
-  const response = await fetch(`https://dummyjson.com/carts/${userId}`, {
+  const url = new URL(`${baseUrl}/carts/user/${userId}`);
+
+  const response = await fetch(url.toString(), {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -95,6 +101,7 @@ export const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.products = action.payload.products;
+        state.totalProducts = action.payload.totalProducts;
         state.totalQuantity = action.payload.totalQuantity;
         state.total = action.payload.total;
         state.discountedTotal = action.payload.discountedTotal;
@@ -109,6 +116,7 @@ export const cartSlice = createSlice({
       })
       .addCase(updateCart.fulfilled, (state, action) => {
         state.products = action.payload.products;
+        state.totalProducts = action.payload.totalProducts;
         state.totalQuantity = action.payload.totalQuantity;
         state.total = action.payload.total;
         state.discountedTotal = action.payload.discountedTotal;
