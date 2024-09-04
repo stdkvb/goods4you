@@ -1,24 +1,94 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { CartState } from "../../types";
+import { RootState } from "../store";
+import { baseUrl } from "../../config";
 
 const initialState: CartState = {
   products: [],
-  totalQuantity: 0,
-  total: 0,
-  discountedTotal: 0,
+  totalProducts: null,
+  totalQuantity: null,
+  total: null,
+  discountedTotal: null,
   status: "idle",
   error: null,
 };
 
 export const fetchCart = createAsyncThunk<CartState>(
   "cart/fetchCart",
-  async () => {
-    const response = await fetch(`https://dummyjson.com/carts/user/6`);
+  async (_, { getState }) => {
+    const state = getState() as RootState;
+    const token = localStorage.getItem("authToken");
+    const userId = state.userSlice.id;
+
+    if (!userId) {
+      return initialState;
+    }
+
+    const url = new URL(`${baseUrl}/carts/user/${userId}`);
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
+
     return data.carts.length > 0 ? data.carts[0] : initialState;
   }
 );
+
+export const updateCart = createAsyncThunk<
+  CartState,
+  { productId: number; quantityChange: number }
+>("cart/updateCart", async ({ productId, quantityChange }, { getState }) => {
+  const state = getState() as RootState;
+  const token = localStorage.getItem("authToken");
+  const userId = state.userSlice.id;
+
+  if (!userId) {
+    return initialState;
+  }
+
+  const currentProducts: { id: number; quantity: number }[] =
+    state.cartSlice.products.map((product) => ({
+      id: product.id,
+      quantity: product.quantity,
+    }));
+
+  const productIndex = currentProducts.findIndex(
+    (product) => product.id === productId
+  );
+
+  if (productIndex !== -1) {
+    currentProducts[productIndex] = {
+      ...currentProducts[productIndex],
+      quantity:
+        currentProducts[productIndex].quantity + quantityChange >= 0
+          ? currentProducts[productIndex].quantity + quantityChange
+          : 0,
+    };
+  } else if (quantityChange > 0) {
+    currentProducts.push({ id: productId, quantity: quantityChange });
+  }
+
+  const url = new URL(`${baseUrl}/carts/user/${userId}`);
+
+  const response = await fetch(url.toString(), {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      merge: false,
+      products: currentProducts,
+    }),
+  });
+
+  const data = await response.json();
+  return data;
+});
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -30,15 +100,31 @@ export const cartSlice = createSlice({
         state.status = "pending";
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.products = action.payload.products;
+        state.totalProducts = action.payload.totalProducts;
         state.totalQuantity = action.payload.totalQuantity;
         state.total = action.payload.total;
         state.discountedTotal = action.payload.discountedTotal;
+        state.status = "succeeded";
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.status = "failed";
         state.error = action.error.message || null;
+        state.status = "failed";
+      })
+      .addCase(updateCart.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(updateCart.fulfilled, (state, action) => {
+        state.products = action.payload.products;
+        state.totalProducts = action.payload.totalProducts;
+        state.totalQuantity = action.payload.totalQuantity;
+        state.total = action.payload.total;
+        state.discountedTotal = action.payload.discountedTotal;
+        state.status = "succeeded";
+      })
+      .addCase(updateCart.rejected, (state, action) => {
+        state.error = action.error.message || null;
+        state.status = "failed";
       });
   },
 });

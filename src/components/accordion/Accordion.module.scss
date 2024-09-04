@@ -3,13 +3,12 @@
   border-top: solid 1px var(--white);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  padding-bottom: 20px;
 
   &.active {
     .content {
       opacity: 1;
       max-height: 300px;
-      margin-bottom: 20px;
     }
     .icon {
       transform: rotate(45deg);
@@ -50,6 +49,10 @@
     max-height: 0;
     transition: all var(--transitionDuration) ease-in;
     will-change: max-height;
+
+    .divider {
+      height: 20px;
+    }
 
     p {
       font-size: 16px;

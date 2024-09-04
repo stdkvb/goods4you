@@ -11,4 +11,5 @@ Install the dependencies and start the server.
 pnpm install
 pnpm run dev
 pnpm run storybook
+pnpm run test
 ```

@@ -6,7 +6,9 @@ import { CartState, Product } from "../../types";
 import CartItem from "../../components/cartItem/CartItem";
 
 const CartPage = () => {
-  const cart = useSelector((state: { cart: CartState }) => state.cart);
+  const cart = useSelector(
+    (state: { cartSlice: CartState }) => state.cartSlice
+  );
 
   return (
     <>
@@ -20,15 +22,12 @@ const CartPage = () => {
         <div className={styles.wrapper}>
           <h1 id="cartPageTitle">My cart</h1>
           <div className={styles.content}>
-            {cart.status == "pending" && (
-              <span className={styles.message}>Loading...</span>
-            )}
             {cart.status == "failed" && (
               <span className={styles.message}>
                 Error occurred: {cart.error}
               </span>
             )}
-            {cart.status == "succeeded" && cart.totalQuantity !== 0 ? (
+            {cart.products && cart.products.length > 0 ? (
               <>
                 <ul className={styles.list} aria-label="items in cart">
                   {cart.products.map((item: Product) => (
@@ -39,19 +38,20 @@ const CartPage = () => {
                   <li className={styles.totalCount}>
                     Total count{" "}
                     <span>
-                      {cart.totalQuantity} item
-                      {cart.totalQuantity > 1 ? "s" : ""}
+                      {cart.totalProducts} item
+                      {cart.totalProducts && cart.totalProducts > 1 ? "s" : ""}
                     </span>
                   </li>
                   <li className={styles.discount}>
-                    Price without discount <span>${cart.total}</span>
+                    Price without discount{" "}
+                    <span>${cart.total?.toFixed(2)}</span>
                   </li>
                   <li className={styles.totalPrice}>
                     Total price <span>${cart.discountedTotal}</span>
                   </li>
                 </ul>
               </>
-            ) : cart.status == "succeeded" && cart.totalQuantity === 0 ? (
+            ) : cart.status == "succeeded" && cart.products.length === 0 ? (
               <span className={styles.message}>No items</span>
             ) : null}
           </div>

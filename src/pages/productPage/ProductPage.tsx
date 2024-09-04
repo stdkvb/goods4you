@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import styles from "./ProductPage.module.scss";
 import Rating from "../../components/rating/Rating";
 import { useGetProductByIdQuery } from "../../store/api/productsApi";
-import { useState } from "react";
+import Loader from "../../components/loader/Loader";
 import Counter from "../../components/counter/Counter";
 import ProductGallery from "../../components/productGallery/ProductGallery";
 
@@ -20,7 +21,7 @@ const ProductPage = () => {
     setActiveIndex(index);
   };
 
-  if (isLoading) return <span className={styles.message}>Loading...</span>;
+  if (isLoading) return <Loader />;
 
   if (error || !data) {
     navigate("/not-found");
@@ -72,7 +73,11 @@ const ProductPage = () => {
                     Your discount: <span>{data.discountPercentage}%</span>
                   </div>
                 </div>
-                <Counter id={data.id} buttonText="Add to cart" />
+                <Counter
+                  id={data.id}
+                  buttonText="Add to cart"
+                  stock={data.stock}
+                />
               </div>
             </section>
           </article>

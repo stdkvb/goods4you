@@ -1,5 +1,6 @@
 .card {
   padding-bottom: 6px;
+  transition: all var(--transitionDuration) ease;
 
   &:hover {
     .name {
@@ -9,12 +10,15 @@
       opacity: 1;
     }
   }
-  &.hover {
-    .name {
-      text-decoration: underline;
-    }
-    .background {
-      opacity: 1;
+
+  &:has(.counter:hover) {
+    &:hover {
+      .name {
+        text-decoration: none;
+      }
+      .background {
+        opacity: 0;
+      }
     }
   }
 }

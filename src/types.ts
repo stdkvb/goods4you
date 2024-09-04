@@ -25,9 +25,10 @@ export interface FaqItem {
 
 export interface CartState {
   products: Product[];
-  total: number;
-  discountedTotal: number;
-  totalQuantity: number;
+  total: number | null;
+  discountedTotal: number | null;
+  totalProducts: number | null;
+  totalQuantity: number | null;
   status: "idle" | "pending" | "succeeded" | "failed";
   error: null | string;
 }
@@ -44,6 +45,8 @@ export interface CounterProps {
   id: number;
   buttonText?: string;
   initialQuantity?: number;
+  className?: string;
+  stock?: number;
 }
 
 export interface ProductCardProps {
@@ -56,4 +59,11 @@ export interface RatingProps {
 
 export interface SearchBarProps {
   onSearch: (query: string) => void;
+}
+
+export interface UserState {
+  loggedIn: boolean;
+  id: number | null;
+  firstName: string;
+  lastName: string;
 }
