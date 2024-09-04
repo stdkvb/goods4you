@@ -1,14 +1,10 @@
 import { useState } from "react";
 import styles from "./Accordion.module.scss";
-import { faqItem } from "../../types";
+import { AccordionProps } from "../../types";
 import { plusIcon } from "../../assets/icons";
 
-interface AccordionProps {
-  data: faqItem;
-}
-
 const Accordion: React.FC<AccordionProps> = ({ data }) => {
-  const [isActive, setIsActive] = useState(data.open);
+  const [isActive, setIsActive] = useState(false);
 
   const handleToggle = () => {
     setIsActive(!isActive);

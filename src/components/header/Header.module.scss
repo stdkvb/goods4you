@@ -42,7 +42,8 @@
     border-radius: 10px;
     background-color: var(--secondary);
     font-size: 8px;
-    width: 12px;
+    min-width: 8px;
+    padding: 0 2px;
     height: 12px;
     display: flex;
     align-items: center;

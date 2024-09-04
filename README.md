@@ -10,4 +10,5 @@ Install the dependencies and start the server.
 ```sh
 pnpm install
 pnpm run dev
+pnpm run storybook
 ```

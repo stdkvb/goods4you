@@ -1,15 +1,20 @@
+import { debounce } from "lodash";
 import styles from "./SearchBar.module.scss";
+import { SearchBarProps } from "../../types";
 
-const SearchBar: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const handleSearchInput = debounce(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onSearch(e.target.value);
+    },
+    500
+  );
+
   return (
-    <form
+    <div
       className={styles.searchBar}
       role="search"
       aria-labelledby="searchFormLabel"
-      onSubmit={handleSubmit}
     >
       <label htmlFor="searchInput" id="searchFormLabel" className="hidden">
         search in catalog by title
@@ -19,11 +24,9 @@ const SearchBar: React.FC = () => {
         type="text"
         placeholder="Search by title"
         aria-label="search in catalog by title"
+        onChange={handleSearchInput}
       />
-      <button type="submit" className="hidden">
-        submit search
-      </button>
-    </form>
+    </div>
   );
 };
 
