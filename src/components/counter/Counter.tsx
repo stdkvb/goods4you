@@ -20,6 +20,9 @@ const Counter: React.FC<CounterProps> = ({
     shallowEqual
   );
 
+  const status = useSelector(
+    (state: { cartSlice: CartState }) => state.cartSlice.status
+  );
   const quantity = cartProduct ? cartProduct.quantity : initialQuantity;
 
   const handleAddToCart = () => {
@@ -33,6 +36,8 @@ const Counter: React.FC<CounterProps> = ({
   const handleDecrease = () => {
     dispatch(updateCart({ productId: id, quantityChange: -1 }));
   };
+
+  const isLoading = status === "pending";
 
   return (
     <div
@@ -51,9 +56,10 @@ const Counter: React.FC<CounterProps> = ({
           </span>
           <div className={styles.buttons}>
             <button
-              className="btn btn_icon"
+              className={`btn btn_icon ${isLoading ? "disabled" : ""}`}
               onClick={handleDecrease}
               aria-label="decrease item count"
+              disabled={isLoading}
             >
               {minusIcon}
             </button>
@@ -61,9 +67,10 @@ const Counter: React.FC<CounterProps> = ({
               quantity > 1 ? "s" : ""
             }`}</span>
             <button
-              className={`btn btn_icon ${quantity == stock && "disabled"}`}
+              className={`btn btn_icon ${quantity == stock || isLoading ? "disabled" : ""}`}
               onClick={handleIncrease}
               aria-label="increase item count"
+              disabled={isLoading || quantity === stock}
             >
               {plusIcon}
             </button>
